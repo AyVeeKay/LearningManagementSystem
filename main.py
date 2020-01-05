@@ -2,8 +2,8 @@ from application import app
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def index():
+    return "The main page for LMS project"
 
 
 if __name__ == '__main__':
