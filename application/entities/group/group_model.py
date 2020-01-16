@@ -14,9 +14,9 @@ class Group(db.Model):
 
     students = db.relationship("student", backref="group", lazy="dynamic")
     courses = db.relationship(
-        "Courses",
-        secondary="courses_and_groups",
-        backref=db.backref("courses", lazy="dynamic"), lazy="subquery"
+        "course",
+        secondary="courses_x_groups",
+        backref=db.backref("course", lazy="dynamic"), lazy="subquery"
     )
 
     def __repr__(self):

@@ -7,8 +7,8 @@ class Professor(User):
     __tablename__ = "professor"
 
     courses = db.relationship(
-        "Course", secondary="courses_and_professors",
-        backref=db.backref("courses", lazy="dynamic"), lazy="subquery"
+        "course", secondary="courses_x_professors",
+        backref=db.backref("course", lazy="dynamic"), lazy="subquery"
     )
 
     def __repr__(self):

@@ -12,15 +12,15 @@ class Course(db.Model):
     description = db.Column(db.String(100), nullable=True)
 
     professors = db.relationship(
-        "Professor",
-        secondary="courses_and_professors",
-        backref=db.backref("professors", lazy="dynamic"),
+        "professor",
+        secondary="courses_x_professors",
+        backref=db.backref("professor", lazy="dynamic"),
         lazy="subquery"
     )
     groups = db.relationship(
-        "Group",
-        secondary="courses_and_groups",
-        backref=db.backref("groups", lazy="dynamic"),
+        "group",
+        secondary="courses_x_groups",
+        backref=db.backref("group", lazy="dynamic"),
         lazy="subquery"
     )
 
