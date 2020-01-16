@@ -10,17 +10,17 @@ api = UserDto.api
 _user = UserDto.user
 
 
-@api.route('/')
+@api.route("/")
 class UserList(Resource):
-    @api.doc('list_of_registered_users')
-    @api.marshal_list_with(_user, envelope='data')
+    @api.doc("list_of_registered_users")
+    @api.marshal_list_with(_user, envelope="data")
     def get(self):
         """List all registered users"""
         return UserService.get_all_users()
 
     @AuthService.admin_permission_required
-    @api.response(201, 'User successfully created.')
-    @api.doc('create a new user(only for admin)')
+    @api.response(201, "User successfully created.")
+    @api.doc("create a new user(only for admin)")
     @api.expect(_user, validate=True)
     def post(self):
         """Creates a new User(only for admin) """
@@ -28,11 +28,11 @@ class UserList(Resource):
         return user_service.create_user(request.json)
 
 
-@api.route('/<public_id>')
-@api.param('public_id', 'The User identifier')
-@api.response(404, 'User not found.')
+@api.route("/<public_id>")
+@api.param("public_id", "The User identifier")
+@api.response(404, "User not found.")
 class User(Resource):
-    @api.doc('get a user')
+    @api.doc("get a user")
     @api.marshal_with(_user)
     def get(self, public_id):
         """get a user given its identifier"""
